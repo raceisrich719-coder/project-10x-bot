@@ -159,4 +159,9 @@ def run_cycle():
 
 
 if __name__ == "__main__":
-    run_cycle()
+    # When invoked directly (e.g. from the cloud cron), only trade if the market
+    # is actually open. --force overrides for testing.
+    if "--force" in sys.argv or trade_client.get_clock().is_open:
+        run_cycle()
+    else:
+        print("Market closed -- skipping cycle.")
