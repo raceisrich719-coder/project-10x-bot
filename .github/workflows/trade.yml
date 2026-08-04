@@ -1,0 +1,39 @@
+name: Project 10X live trading
+
+on:
+  schedule:
+    - cron: "*/10 13-20 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: live-trading
+  cancel-in-progress: false
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install --quiet alpaca-py pandas python-dotenv
+      - name: Run one trading cycle
+        env:
+          APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+          APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+        run: python intraday_bot.py --live
+      - name: Save trades to the repo
+        run: |
+          git config user.name "project10x-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add botmemory reports
+          git commit -m "live cycle $(date -u +%FT%TZ)" || echo "no changes this cycle"
+          git pull --rebase origin main || true
+          git push || true
