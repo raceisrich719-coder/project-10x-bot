@@ -7,12 +7,29 @@ Run:
     python run_day.py          -> DRY RUN all day (logs decisions, trades nothing)
     python run_day.py --live   -> trades the PAPER account all day for real
 """
+import os
 import sys
 import time
+import subprocess
 from datetime import datetime
 
 from intraday_bot import run_cycle, trade_client, LIVE
 import report
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+
+def push_to_github():
+    """Commit the day's trade memory + report and push to the private repo so the
+    cloud research agent has fresh data. Best-effort -- never crashes the bot."""
+    try:
+        subprocess.run(["git", "add", "botmemory", "reports"], cwd=HERE, check=False)
+        msg = f"trades {datetime.now():%Y-%m-%d}"
+        subprocess.run(["git", "commit", "-m", msg], cwd=HERE, check=False)
+        subprocess.run(["git", "push"], cwd=HERE, check=False)
+        print("Pushed today's data to GitHub for cloud analysis.")
+    except Exception as e:
+        print("(GitHub push skipped:", type(e).__name__, e, ")")
 
 INTERVAL = 180  # seconds between cycles (180s ~= up to 130 cycles/day)
 
@@ -35,6 +52,7 @@ def main():
             if ran_any:
                 print("\nMarket closed. Generating end-of-day report...")
                 report.generate()
+                push_to_github()
                 print("Autopilot done for the day.")
                 return
             # Pre-open: wait for the bell.
