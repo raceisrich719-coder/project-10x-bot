@@ -17,6 +17,7 @@ Run:
 import os
 import sys
 import math
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from alpaca.trading.client import TradingClient
 from alpaca.trading.requests import MarketOrderRequest
@@ -25,7 +26,7 @@ from alpaca.data.historical.news import NewsClient
 from alpaca.data.requests import NewsRequest
 
 import journal
-from data import get_minutes
+from data import get_minutes, get_daily
 
 # ---- knobs (aggressive, on purpose -- it's a sandbox) ----
 UNIVERSE = ["TQQQ", "SQQQ", "SOXL", "SOXS", "SPXL", "TSLA", "NVDA", "AMD", "META", "AAPL"]
@@ -97,6 +98,31 @@ def _momentum_scores():
     return scores
 
 
+REGIME_SYMBOL = "SPY"   # read the broad market to decide how aggressive to be
+
+
+def market_regime():
+    """Set aggression from the broad market's trend:
+       1.0 = strong uptrend  -> go aggressive (full size, full positions)
+       0.5 = mixed           -> play it safe (smaller size, fewer positions)
+       0.0 = downtrend       -> defensive: manage exits only, NO new trades."""
+    try:
+        bars = get_daily(REGIME_SYMBOL, datetime.now() - timedelta(days=320), datetime.now())
+        close = bars["close"]
+        price = close.iloc[-1]
+        sma50 = close.rolling(50).mean().iloc[-1]
+        sma200 = close.rolling(200).mean().iloc[-1]
+        mom10 = price / close.iloc[-11] - 1.0
+        if price > sma50 and price > sma200 and mom10 > 0:
+            return 1.0, f"RISK-ON strong uptrend (SPY {mom10*100:+.1f}%/10d) -> AGGRESSIVE"
+        if price > sma200:
+            return 0.5, "NEUTRAL mixed trend -> cautious, smaller size"
+        return 0.0, "RISK-OFF downtrend (SPY below its 200-day) -> defensive, no new trades"
+    except Exception as e:
+        print("  (regime check failed:", type(e).__name__, e, ")")
+        return 0.5, "UNKNOWN -> cautious default"
+
+
 def run_cycle():
     print("--- cycle ---")
     acct = trade_client.get_account()
@@ -117,10 +143,15 @@ def run_cycle():
             _order(sym, float(p.qty), OrderSide.SELL,
                    f"stop loss {plpc*100:.1f}% (${pl:+,.0f})", price=cur_price, pnl=pl)
 
-    # 2. Look for fresh entries.
+    # 2. Look for fresh entries -- but only as aggressively as the market allows.
+    regime_mult, regime_label = market_regime()
+    print(f"  Market regime: {regime_label}")
+
+    max_pos = {1.0: MAX_POSITIONS, 0.5: 3, 0.0: 0}.get(regime_mult, 3)
+    eff_size = TRADE_SIZE * regime_mult      # smaller clips when cautious, none when defensive
     held = set(positions.keys())
-    slots = MAX_POSITIONS - len(held)
-    if slots > 0 and cash > TRADE_SIZE:
+    slots = max_pos - len(held)
+    if slots > 0 and eff_size > 0 and cash > eff_size:
         scores = _momentum_scores()
         hot_news = _news_symbols()
         ranked = []
@@ -132,6 +163,7 @@ def run_cycle():
             ranked.append((score, mom, sym))
         ranked.sort(reverse=True)
 
+        stance = "aggressive" if regime_mult >= 1 else "cautious"
         for score, mom, sym in ranked[:slots]:
             if mom <= 0:            # only buy things actually moving up
                 continue
@@ -142,10 +174,10 @@ def run_cycle():
                 price = float(df.loc[sym]["close"].iloc[-1])
             except Exception:
                 continue
-            qty = math.floor(TRADE_SIZE / price)
+            qty = math.floor(eff_size / price)
             catalyst = "news+" if sym in hot_news else ""
             _order(sym, qty, OrderSide.BUY,
-                   f"{catalyst}momentum +{mom*100:.2f}% over {MOMENTUM_LOOKBACK}m",
+                   f"{catalyst}momentum +{mom*100:.2f}% over {MOMENTUM_LOOKBACK}m [{stance}]",
                    price=price)
 
     # Snapshot account value each cycle -> a full equity history to chart later.
