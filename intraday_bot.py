@@ -24,6 +24,7 @@ from alpaca.trading.requests import MarketOrderRequest
 from alpaca.trading.enums import OrderSide, TimeInForce
 from alpaca.data.historical.news import NewsClient
 from alpaca.data.requests import NewsRequest
+from alpaca.data.enums import DataFeed
 
 import journal
 from data import get_minutes, get_daily
@@ -107,7 +108,8 @@ def market_regime():
        0.5 = mixed           -> play it safe (smaller size, fewer positions)
        0.0 = downtrend       -> defensive: manage exits only, NO new trades."""
     try:
-        bars = get_daily(REGIME_SYMBOL, datetime.now() - timedelta(days=320), datetime.now())
+        bars = get_daily(REGIME_SYMBOL, datetime.now() - timedelta(days=320), datetime.now(),
+                         feed=DataFeed.IEX)
         close = bars["close"]
         price = close.iloc[-1]
         sma50 = close.rolling(50).mean().iloc[-1]

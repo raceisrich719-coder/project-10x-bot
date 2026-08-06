@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockBarsRequest
 from alpaca.data.timeframe import TimeFrame
-from alpaca.data.enums import Adjustment
+from alpaca.data.enums import Adjustment, DataFeed
 
 load_dotenv()
 _KEY = os.getenv("APCA_API_KEY_ID")
@@ -16,14 +16,17 @@ _SECRET = os.getenv("APCA_API_SECRET_KEY")
 _client = StockHistoricalDataClient(_KEY, _SECRET)
 
 
-def get_daily(symbol: str, start: datetime, end: datetime):
-    """Return a DataFrame indexed by date with open/high/low/close/volume for one symbol."""
+def get_daily(symbol: str, start: datetime, end: datetime, feed=None):
+    """Return a DataFrame indexed by date with open/high/low/close/volume for one symbol.
+    feed=None uses the default (SIP) feed, fine for historical backtests. Pass
+    DataFeed.IEX when the request includes *recent* data (free tier can't do recent SIP)."""
     req = StockBarsRequest(
         symbol_or_symbols=symbol,
         timeframe=TimeFrame.Day,
         start=start,
         end=end,
         adjustment=Adjustment.ALL,  # split + dividend adjusted -- essential or splits fake huge crashes
+        feed=feed,
     )
     df = _client.get_stock_bars(req).df
     # Drop the symbol level so we have a clean date-indexed frame.
@@ -45,5 +48,6 @@ def get_minutes(symbols, lookback_min: int = 60):
         start=start,
         end=end,
         adjustment=Adjustment.RAW,
+        feed=DataFeed.IEX,   # free real-time feed -- SIP recent data needs a paid plan
     )
     return _client.get_stock_bars(req).df
