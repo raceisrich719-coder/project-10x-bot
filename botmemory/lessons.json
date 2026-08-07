@@ -1,10 +1,10 @@
 {
-  "total_events": 54,
-  "closed_trades": 24,
-  "updated": "2026-08-06T19:46:59",
-  "win_rate_pct": 37.5,
-  "total_pnl": -170.89,
-  "avg_pnl": -7.12,
+  "total_events": 102,
+  "closed_trades": 48,
+  "updated": "2026-08-07T19:58:46",
+  "win_rate_pct": 33.3,
+  "total_pnl": -861.34,
+  "avg_pnl": -17.94,
   "by_symbol": {
     "AAPL": {
       "trades": 1,
@@ -17,29 +17,34 @@
       "avg_pnl": 40.08
     },
     "NVDA": {
-      "trades": 1,
-      "total_pnl": -66.67,
-      "avg_pnl": -66.67
+      "trades": 3,
+      "total_pnl": -36.76,
+      "avg_pnl": -12.25
     },
     "SOXL": {
-      "trades": 9,
-      "total_pnl": 110.79,
-      "avg_pnl": 12.31
+      "trades": 13,
+      "total_pnl": 12.82,
+      "avg_pnl": 0.99
     },
     "SOXS": {
-      "trades": 8,
-      "total_pnl": -158.73,
-      "avg_pnl": -19.84
+      "trades": 19,
+      "total_pnl": -588.22,
+      "avg_pnl": -30.96
     },
     "SQQQ": {
-      "trades": 1,
-      "total_pnl": -67.39,
-      "avg_pnl": -67.39
+      "trades": 4,
+      "total_pnl": -295.24,
+      "avg_pnl": -73.81
     },
     "TQQQ": {
-      "trades": 1,
-      "total_pnl": -59.18,
-      "avg_pnl": -59.18
+      "trades": 2,
+      "total_pnl": -126.98,
+      "avg_pnl": -63.49
+    },
+    "TSLA": {
+      "trades": 3,
+      "total_pnl": 102.73,
+      "avg_pnl": 34.24
     }
   }
 }

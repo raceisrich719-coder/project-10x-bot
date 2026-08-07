@@ -1,0 +1,23 @@
+========================================================
+   PROJECT 10X  --  EARNINGS REPORT  2026-08-07
+========================================================
+  Equity now:       $99,231.68
+  Day P&L:          $-727.72  (-0.73%)
+  Progress to $1M:  9.9%
+
+  Trades today:     48  (24 buys, 24 sells)
+  Closed for P&L:   24   |  Win rate: 29%
+  Realized today:   $-690.46
+  Best trade:       SOXS $+169
+  Worst trade:      SOXS $-262
+
+  What the bot has learned (lifetime avg P&L per trade):
+    AMD       3 trades   avg $+40.1
+    TSLA      3 trades   avg $+34.2
+    SOXL     13 trades   avg $+1.0
+    NVDA      3 trades   avg $-12.2
+    SOXS     19 trades   avg $-31.0
+    AAPL      1 trades   avg $-50.0
+    TQQQ      2 trades   avg $-63.5
+    SQQQ      4 trades   avg $-73.8
+========================================================
