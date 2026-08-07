@@ -1,0 +1,55 @@
+ts,action,symbol,qty,price,usd,pnl,reason
+2026-08-06T13:30:55,BUY,SOXL,39,125.61,4898.79,,momentum +0.22% over 15m [aggressive]
+2026-08-06T13:30:56,BUY,SQQQ,127,39.28,4988.56,,momentum +0.20% over 15m [aggressive]
+2026-08-06T13:30:57,BUY,SOXS,106,47.1,4992.6,,momentum +0.06% over 15m [aggressive]
+2026-08-06T13:33:58,BUY,AAPL,15,315.16,4727.4,,news+momentum +0.37% over 15m [aggressive]
+2026-08-06T13:33:58,BUY,META,8,589.87,4718.92,,news+momentum +0.04% over 15m [aggressive]
+2026-08-06T13:36:58,SELL,SOXL,39,126.85,4947.15,160.909983,take profit +3.4% ($+161)
+2026-08-06T13:36:58,SELL,SOXS,106,46.77,4957.62,-192.92,stop loss -3.7% ($-193)
+2026-08-06T13:36:59,BUY,NVDA,22,222.84,4902.48,,news+momentum +0.91% over 15m [aggressive]
+2026-08-06T13:40:00,BUY,AMD,10,478.58,4785.8,,news+momentum +0.80% over 15m [aggressive]
+2026-08-06T13:40:01,BUY,TSLA,15,319.06,4785.82,,news+momentum +0.69% over 15m [aggressive]
+2026-08-06T13:46:01,SELL,SQQQ,127,38.8,4928.23,-67.394963,stop loss -1.3% ($-67)
+2026-08-06T13:49:04,BUY,SOXL,37,132.24,4892.88,,momentum +5.28% over 15m [aggressive]
+2026-08-06T13:55:04,SELL,SOXL,37,130.12,4814.44,-75.85,stop loss -1.6% ($-76)
+2026-08-06T13:58:06,BUY,SOXL,37,132.05,4885.85,,momentum +6.08% over 15m [aggressive]
+2026-08-06T14:07:08,SELL,SOXL,37,134.8,4987.6,106.56,take profit +2.2% ($+107)
+2026-08-06T14:10:08,SELL,AMD,10,486.99,4869.9,91.72,take profit +1.9% ($+92)
+2026-08-06T14:10:10,BUY,SOXL,36,136.27,4905.72,,momentum +4.45% over 15m [aggressive]
+2026-08-06T14:13:12,BUY,AMD,10,487.38,4873.8,,news+momentum +1.08% over 15m [aggressive]
+2026-08-06T14:25:14,SELL,NVDA,22,220.25,4845.51,-66.671198,stop loss -1.4% ($-67)
+2026-08-06T14:28:16,BUY,TQQQ,68,72.71,4944.28,,momentum +0.83% over 15m [aggressive]
+2026-08-06T14:34:16,SELL,SOXL,36,139.06,5006.16,75.380004,take profit +1.5% ($+75)
+2026-08-06T14:37:18,BUY,SOXL,35,139.31,4875.85,,momentum +0.91% over 15m [aggressive]
+2026-08-06T14:40:18,SELL,SOXL,35,136.57,4780.12,-63.875,stop loss -1.3% ($-64)
+2026-08-06T14:43:19,BUY,SOXS,116,42.99,4986.84,,momentum +0.54% over 15m [aggressive]
+2026-08-06T14:46:19,SELL,SOXS,116,43.69,5068.04,85.84,take profit +1.7% ($+86)
+2026-08-06T14:49:20,BUY,SOXS,114,43.55,4964.7,,momentum +1.78% over 15m [aggressive]
+2026-08-06T15:01:21,SELL,SOXS,114,42.81,4880.34,-61.390026,stop loss -1.2% ($-61)
+2026-08-06T15:04:22,BUY,SOXL,36,136.9,4928.4,,momentum +0.54% over 15m [aggressive]
+2026-08-06T15:10:22,SELL,SOXL,36,139.75,5031.0,90.72,take profit +1.8% ($+91)
+2026-08-06T15:13:24,BUY,SOXL,35,139.5,4882.5,,momentum +2.72% over 15m [aggressive]
+2026-08-06T15:19:25,SELL,AAPL,15,310.91,4663.65,-49.95,stop loss -1.1% ($-50)
+2026-08-06T15:19:25,SELL,SOXL,35,138.18,4836.3,-58.129995,stop loss -1.2% ($-58)
+2026-08-06T15:22:26,BUY,SOXL,36,138.66,4991.76,,momentum +0.70% over 15m [aggressive]
+2026-08-06T15:22:26,BUY,SQQQ,130,38.3,4979.65,,momentum +0.41% over 15m [aggressive]
+2026-08-06T15:34:27,SELL,SOXL,36,136.8,4924.8,-70.56,stop loss -1.4% ($-71)
+2026-08-06T15:37:28,BUY,SOXS,115,43.27,4976.05,,momentum +2.51% over 15m [aggressive]
+2026-08-06T15:49:30,SELL,SOXS,115,42.88,4931.2,-61.05005,stop loss -1.2% ($-61)
+2026-08-06T15:52:31,BUY,SOXS,115,43.16,4963.4,,momentum +1.03% over 15m [aggressive]
+2026-08-06T16:01:32,SELL,SOXS,115,43.98,5057.7,105.8,take profit +2.1% ($+106)
+2026-08-06T16:01:32,SELL,TQQQ,68,71.95,4892.61,-59.183256,stop loss -1.2% ($-59)
+2026-08-06T16:04:34,BUY,SOXS,114,43.76,4988.64,,momentum +1.81% over 15m [aggressive]
+2026-08-06T16:07:34,SELL,SOXS,114,43.5,4959.0,-56.159934,stop loss -1.1% ($-56)
+2026-08-06T16:07:34,BUY,NVDA,22,217.98,4795.56,,news+momentum +0.12% over 15m [aggressive]
+2026-08-06T16:10:36,BUY,SOXS,114,43.57,4966.98,,momentum +1.30% over 15m [aggressive]
+2026-08-06T16:16:37,SELL,SOXS,114,44.14,5032.02,85.557,take profit +1.7% ($+86)
+2026-08-06T16:19:38,BUY,SOXS,113,44.06,4978.78,,momentum +1.54% over 15m [aggressive]
+2026-08-06T16:52:41,SELL,SOXS,113,43.47,4912.11,-64.41,stop loss -1.3% ($-64)
+2026-08-06T16:55:42,BUY,SOXL,36,135.62,4882.32,,momentum +1.33% over 15m [aggressive]
+2026-08-06T17:01:42,SELL,AMD,10,495.9,4959.0,79.53,take profit +1.6% ($+80)
+2026-08-06T17:04:44,BUY,AMD,10,495.56,4955.6,,news+momentum +1.03% over 15m [aggressive]
+2026-08-06T18:10:50,SELL,AMD,10,490.83,4908.3,-51.0,stop loss -1.0% ($-51)
+2026-08-06T18:13:50,BUY,AAPL,16,312.16,4994.56,,news+momentum +0.20% over 15m [aggressive]
+2026-08-06T19:43:57,SELL,SOXL,36,134.46,4840.56,-54.36,stop loss -1.1% ($-54)
+2026-08-06T19:46:59,BUY,SOXS,113,44.07,4979.91,,momentum +1.08% over 15m [aggressive]

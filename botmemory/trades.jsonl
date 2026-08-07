@@ -1,0 +1,54 @@
+{"ts": "2026-08-06T13:30:55", "action": "BUY", "symbol": "SOXL", "qty": 39, "price": 125.61, "usd": 4898.79, "reason": "momentum +0.22% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T13:30:56", "action": "BUY", "symbol": "SQQQ", "qty": 127, "price": 39.28, "usd": 4988.56, "reason": "momentum +0.20% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T13:30:57", "action": "BUY", "symbol": "SOXS", "qty": 106, "price": 47.1, "usd": 4992.6, "reason": "momentum +0.06% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T13:33:58", "action": "BUY", "symbol": "AAPL", "qty": 15, "price": 315.16, "usd": 4727.4, "reason": "news+momentum +0.37% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T13:33:58", "action": "BUY", "symbol": "META", "qty": 8, "price": 589.87, "usd": 4718.92, "reason": "news+momentum +0.04% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T13:36:58", "action": "SELL", "symbol": "SOXL", "qty": 39, "price": 126.85, "usd": 4947.15, "reason": "take profit +3.4% ($+161)", "pnl": 160.909983}
+{"ts": "2026-08-06T13:36:58", "action": "SELL", "symbol": "SOXS", "qty": 106, "price": 46.77, "usd": 4957.62, "reason": "stop loss -3.7% ($-193)", "pnl": -192.92}
+{"ts": "2026-08-06T13:36:59", "action": "BUY", "symbol": "NVDA", "qty": 22, "price": 222.84, "usd": 4902.48, "reason": "news+momentum +0.91% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T13:40:00", "action": "BUY", "symbol": "AMD", "qty": 10, "price": 478.58, "usd": 4785.8, "reason": "news+momentum +0.80% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T13:40:01", "action": "BUY", "symbol": "TSLA", "qty": 15, "price": 319.06, "usd": 4785.82, "reason": "news+momentum +0.69% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T13:46:01", "action": "SELL", "symbol": "SQQQ", "qty": 127, "price": 38.8, "usd": 4928.23, "reason": "stop loss -1.3% ($-67)", "pnl": -67.394963}
+{"ts": "2026-08-06T13:49:04", "action": "BUY", "symbol": "SOXL", "qty": 37, "price": 132.24, "usd": 4892.88, "reason": "momentum +5.28% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T13:55:04", "action": "SELL", "symbol": "SOXL", "qty": 37, "price": 130.12, "usd": 4814.44, "reason": "stop loss -1.6% ($-76)", "pnl": -75.85}
+{"ts": "2026-08-06T13:58:06", "action": "BUY", "symbol": "SOXL", "qty": 37, "price": 132.05, "usd": 4885.85, "reason": "momentum +6.08% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T14:07:08", "action": "SELL", "symbol": "SOXL", "qty": 37, "price": 134.8, "usd": 4987.6, "reason": "take profit +2.2% ($+107)", "pnl": 106.56}
+{"ts": "2026-08-06T14:10:08", "action": "SELL", "symbol": "AMD", "qty": 10, "price": 486.99, "usd": 4869.9, "reason": "take profit +1.9% ($+92)", "pnl": 91.72}
+{"ts": "2026-08-06T14:10:10", "action": "BUY", "symbol": "SOXL", "qty": 36, "price": 136.27, "usd": 4905.72, "reason": "momentum +4.45% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T14:13:12", "action": "BUY", "symbol": "AMD", "qty": 10, "price": 487.38, "usd": 4873.8, "reason": "news+momentum +1.08% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T14:25:14", "action": "SELL", "symbol": "NVDA", "qty": 22, "price": 220.25, "usd": 4845.51, "reason": "stop loss -1.4% ($-67)", "pnl": -66.671198}
+{"ts": "2026-08-06T14:28:16", "action": "BUY", "symbol": "TQQQ", "qty": 68, "price": 72.71, "usd": 4944.28, "reason": "momentum +0.83% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T14:34:16", "action": "SELL", "symbol": "SOXL", "qty": 36, "price": 139.06, "usd": 5006.16, "reason": "take profit +1.5% ($+75)", "pnl": 75.380004}
+{"ts": "2026-08-06T14:37:18", "action": "BUY", "symbol": "SOXL", "qty": 35, "price": 139.31, "usd": 4875.85, "reason": "momentum +0.91% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T14:40:18", "action": "SELL", "symbol": "SOXL", "qty": 35, "price": 136.57, "usd": 4780.12, "reason": "stop loss -1.3% ($-64)", "pnl": -63.875}
+{"ts": "2026-08-06T14:43:19", "action": "BUY", "symbol": "SOXS", "qty": 116, "price": 42.99, "usd": 4986.84, "reason": "momentum +0.54% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T14:46:19", "action": "SELL", "symbol": "SOXS", "qty": 116, "price": 43.69, "usd": 5068.04, "reason": "take profit +1.7% ($+86)", "pnl": 85.84}
+{"ts": "2026-08-06T14:49:20", "action": "BUY", "symbol": "SOXS", "qty": 114, "price": 43.55, "usd": 4964.7, "reason": "momentum +1.78% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T15:01:21", "action": "SELL", "symbol": "SOXS", "qty": 114, "price": 42.81, "usd": 4880.34, "reason": "stop loss -1.2% ($-61)", "pnl": -61.390026}
+{"ts": "2026-08-06T15:04:22", "action": "BUY", "symbol": "SOXL", "qty": 36, "price": 136.9, "usd": 4928.4, "reason": "momentum +0.54% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T15:10:22", "action": "SELL", "symbol": "SOXL", "qty": 36, "price": 139.75, "usd": 5031.0, "reason": "take profit +1.8% ($+91)", "pnl": 90.72}
+{"ts": "2026-08-06T15:13:24", "action": "BUY", "symbol": "SOXL", "qty": 35, "price": 139.5, "usd": 4882.5, "reason": "momentum +2.72% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T15:19:25", "action": "SELL", "symbol": "AAPL", "qty": 15, "price": 310.91, "usd": 4663.65, "reason": "stop loss -1.1% ($-50)", "pnl": -49.95}
+{"ts": "2026-08-06T15:19:25", "action": "SELL", "symbol": "SOXL", "qty": 35, "price": 138.18, "usd": 4836.3, "reason": "stop loss -1.2% ($-58)", "pnl": -58.129995}
+{"ts": "2026-08-06T15:22:26", "action": "BUY", "symbol": "SOXL", "qty": 36, "price": 138.66, "usd": 4991.76, "reason": "momentum +0.70% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T15:22:26", "action": "BUY", "symbol": "SQQQ", "qty": 130, "price": 38.3, "usd": 4979.65, "reason": "momentum +0.41% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T15:34:27", "action": "SELL", "symbol": "SOXL", "qty": 36, "price": 136.8, "usd": 4924.8, "reason": "stop loss -1.4% ($-71)", "pnl": -70.56}
+{"ts": "2026-08-06T15:37:28", "action": "BUY", "symbol": "SOXS", "qty": 115, "price": 43.27, "usd": 4976.05, "reason": "momentum +2.51% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T15:49:30", "action": "SELL", "symbol": "SOXS", "qty": 115, "price": 42.88, "usd": 4931.2, "reason": "stop loss -1.2% ($-61)", "pnl": -61.05005}
+{"ts": "2026-08-06T15:52:31", "action": "BUY", "symbol": "SOXS", "qty": 115, "price": 43.16, "usd": 4963.4, "reason": "momentum +1.03% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T16:01:32", "action": "SELL", "symbol": "SOXS", "qty": 115, "price": 43.98, "usd": 5057.7, "reason": "take profit +2.1% ($+106)", "pnl": 105.8}
+{"ts": "2026-08-06T16:01:32", "action": "SELL", "symbol": "TQQQ", "qty": 68, "price": 71.95, "usd": 4892.61, "reason": "stop loss -1.2% ($-59)", "pnl": -59.183256}
+{"ts": "2026-08-06T16:04:34", "action": "BUY", "symbol": "SOXS", "qty": 114, "price": 43.76, "usd": 4988.64, "reason": "momentum +1.81% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T16:07:34", "action": "SELL", "symbol": "SOXS", "qty": 114, "price": 43.5, "usd": 4959.0, "reason": "stop loss -1.1% ($-56)", "pnl": -56.159934}
+{"ts": "2026-08-06T16:07:34", "action": "BUY", "symbol": "NVDA", "qty": 22, "price": 217.98, "usd": 4795.56, "reason": "news+momentum +0.12% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T16:10:36", "action": "BUY", "symbol": "SOXS", "qty": 114, "price": 43.57, "usd": 4966.98, "reason": "momentum +1.30% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T16:16:37", "action": "SELL", "symbol": "SOXS", "qty": 114, "price": 44.14, "usd": 5032.02, "reason": "take profit +1.7% ($+86)", "pnl": 85.557}
+{"ts": "2026-08-06T16:19:38", "action": "BUY", "symbol": "SOXS", "qty": 113, "price": 44.06, "usd": 4978.78, "reason": "momentum +1.54% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T16:52:41", "action": "SELL", "symbol": "SOXS", "qty": 113, "price": 43.47, "usd": 4912.11, "reason": "stop loss -1.3% ($-64)", "pnl": -64.41}
+{"ts": "2026-08-06T16:55:42", "action": "BUY", "symbol": "SOXL", "qty": 36, "price": 135.62, "usd": 4882.32, "reason": "momentum +1.33% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T17:01:42", "action": "SELL", "symbol": "AMD", "qty": 10, "price": 495.9, "usd": 4959.0, "reason": "take profit +1.6% ($+80)", "pnl": 79.53}
+{"ts": "2026-08-06T17:04:44", "action": "BUY", "symbol": "AMD", "qty": 10, "price": 495.56, "usd": 4955.6, "reason": "news+momentum +1.03% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T18:10:50", "action": "SELL", "symbol": "AMD", "qty": 10, "price": 490.83, "usd": 4908.3, "reason": "stop loss -1.0% ($-51)", "pnl": -51.0}
+{"ts": "2026-08-06T18:13:50", "action": "BUY", "symbol": "AAPL", "qty": 16, "price": 312.16, "usd": 4994.56, "reason": "news+momentum +0.20% over 15m [aggressive]", "pnl": null}
+{"ts": "2026-08-06T19:43:57", "action": "SELL", "symbol": "SOXL", "qty": 36, "price": 134.46, "usd": 4840.56, "reason": "stop loss -1.1% ($-54)", "pnl": -54.36}
+{"ts": "2026-08-06T19:46:59", "action": "BUY", "symbol": "SOXS", "qty": 113, "price": 44.07, "usd": 4979.91, "reason": "momentum +1.08% over 15m [aggressive]", "pnl": null}
