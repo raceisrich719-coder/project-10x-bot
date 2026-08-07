@@ -17,6 +17,7 @@ Run:
 import os
 import sys
 import math
+import time
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from alpaca.trading.client import TradingClient
@@ -36,7 +37,11 @@ MAX_POSITIONS = 6         # how many names to hold at once
 TAKE_PROFIT = 0.015       # +1.5% -> ring the register
 STOP_LOSS = -0.010        # -1.0% -> cut it
 MOMENTUM_LOOKBACK = 15    # minutes
+INVERSE = {"SQQQ", "SOXS"}   # bearish/inverse ETFs -- never buy these (don't fight the uptrend)
+COOLDOWN_SEC = 1800          # 30 min: don't re-buy a name right after selling it (kills churn)
 LIVE = "--live" in sys.argv
+
+_last_exit = {}              # symbol -> last sell time, powers the cooldown
 
 load_dotenv()
 _key, _secret = os.getenv("APCA_API_KEY_ID"), os.getenv("APCA_API_SECRET_KEY")
@@ -51,6 +56,8 @@ def _order(symbol, qty, side, reason, price=None, pnl=None):
         return
     tag = "LIVE" if LIVE else "DRY"
     print(f"  [{tag}] {side.value.upper()} {qty} {symbol}  <- {reason}")
+    if side == OrderSide.SELL:
+        _last_exit[symbol] = time.time()      # start the anti-churn cooldown on this name
     if LIVE:
         trade_client.submit_order(MarketOrderRequest(
             symbol=symbol, qty=qty, side=side, time_in_force=TimeInForce.DAY))
@@ -158,8 +165,10 @@ def run_cycle():
         hot_news = _news_symbols()
         ranked = []
         for sym, mom in scores.items():
-            if sym in held:
+            if sym in held or sym in INVERSE:                 # skip held + never buy inverse ETFs
                 continue
+            if time.time() - _last_exit.get(sym, 0) < COOLDOWN_SEC:
+                continue                                      # just traded this -- cool off, no churn
             score = mom + (0.002 if sym in hot_news else 0)   # news nudge
             score += journal.symbol_bias(sym) / 100000.0      # learned edge nudge
             ranked.append((score, mom, sym))
