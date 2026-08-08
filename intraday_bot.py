@@ -39,6 +39,15 @@ STOP_LOSS = -0.010        # -1.0% -> cut it
 MOMENTUM_LOOKBACK = 15    # minutes
 INVERSE = {"SQQQ", "SOXS"}   # bearish/inverse ETFs -- never buy these (don't fight the uptrend)
 COOLDOWN_SEC = 1800          # 30 min: don't re-buy a name right after selling it (kills churn)
+
+# CORE sleeve: vol-targeted, trend-gated long in the broad market (out-of-sample-proven edge)
+CORE_SYMBOL = "SPY"
+CORE_WEIGHT = 0.50           # up to 50% of equity in the core foundation
+CORE_TARGET_VOL = 0.15
+CORE_TREND = 200             # only hold the core while SPY is above its 200-day
+CORE_VOL_WINDOW = 20
+CORE_REBAL_BAND = 0.15       # only rebalance the core when it's >15% off target (anti-churn)
+
 LIVE = "--live" in sys.argv
 
 _last_exit = {}              # symbol -> last sell time, powers the cooldown
@@ -132,6 +141,37 @@ def market_regime():
         return 0.5, "UNKNOWN -> cautious default"
 
 
+def manage_core(equity):
+    """CORE sleeve: vol-targeted, trend-gated long in SPY -- the one edge that beats
+    buy-and-hold out-of-sample. Rebalances slowly with a wide band so it never churns."""
+    try:
+        bars = get_daily(CORE_SYMBOL, datetime.now() - timedelta(days=400),
+                         datetime.now(), feed=DataFeed.IEX)
+        close = bars["close"]
+        price = float(close.iloc[-1])
+        in_trend = price > float(close.rolling(CORE_TREND).mean().iloc[-1])
+        realized = float(close.pct_change().rolling(CORE_VOL_WINDOW).std().iloc[-1]) * math.sqrt(252)
+        scale = min(CORE_TARGET_VOL / realized, 1.0) if realized > 0 else 0.0
+    except Exception as e:
+        print("  (core sleeve skipped:", type(e).__name__, e, ")")
+        return
+
+    target_dollars = CORE_WEIGHT * equity * (scale if in_trend else 0.0)
+    target_shares = math.floor(target_dollars / price)
+    try:
+        cur = float(trade_client.get_open_position(CORE_SYMBOL).qty)
+    except Exception:
+        cur = 0.0
+    delta = int(target_shares - cur)
+    if abs(delta) < 1 or abs(delta) * price < CORE_REBAL_BAND * max(target_dollars, equity * 0.10):
+        return
+    side = OrderSide.BUY if delta > 0 else OrderSide.SELL
+    print(f"  CORE {CORE_SYMBOL}: {'uptrend' if in_trend else 'downtrend'} scale={scale:.2f} "
+          f"-> target {target_shares}sh (have {cur:.0f})")
+    _order(CORE_SYMBOL, abs(delta), side,
+           f"core voltrend rebalance ({'up' if in_trend else 'down'}trend)", price=price)
+
+
 def run_cycle():
     print("--- cycle ---")
     acct = trade_client.get_account()
@@ -140,8 +180,13 @@ def run_cycle():
 
     positions = {p.symbol: p for p in trade_client.get_all_positions()}
 
-    # 1. Manage exits: take profits, cut losses.
+    # 0. CORE sleeve first -- the slow, trend/vol-targeted foundation (~50% of equity).
+    manage_core(equity)
+
+    # 1. Manage exits on the fast DAY sleeve only -- never touch the core position.
     for sym, p in positions.items():
+        if sym == CORE_SYMBOL:
+            continue
         plpc = float(p.unrealized_plpc)
         pl = float(p.unrealized_pl)
         cur_price = float(p.current_price)
@@ -158,7 +203,7 @@ def run_cycle():
 
     max_pos = {1.0: MAX_POSITIONS, 0.5: 3, 0.0: 0}.get(regime_mult, 3)
     eff_size = TRADE_SIZE * regime_mult      # smaller clips when cautious, none when defensive
-    held = set(positions.keys())
+    held = set(positions.keys()) - {CORE_SYMBOL}   # core doesn't count against day-sleeve slots
     slots = max_pos - len(held)
     if slots > 0 and eff_size > 0 and cash > eff_size:
         scores = _momentum_scores()

@@ -138,6 +138,30 @@ def vol_target(prices: pd.DataFrame, target_vol: float = 0.15, window: int = 20)
     return (target_vol / realized).clip(0.0, 1.0)
 
 
+def vol_target_trend(prices: pd.DataFrame, target_vol: float = 0.15,
+                     window: int = 20, trend: int = 200) -> pd.Series:
+    """THE CORE SLEEVE candidate: vol-target sizing, but ONLY when price is above its
+    long trend. Combines the two edges that survive every test -- ride the trend,
+    size by risk. Flat in downtrends."""
+    close = prices["close"]
+    in_trend = (close > close.rolling(trend).mean()).astype(float)
+    realized = close.pct_change().rolling(window).std() * np.sqrt(TRADING_DAYS)
+    scale = (target_vol / realized).clip(0.0, 1.0)
+    return (scale * in_trend).clip(0.0, 1.0)
+
+
+def donchian(prices: pd.DataFrame, window: int = 50) -> pd.Series:
+    """Speculative breakout system: go long on a break above the prior N-day high,
+    flat on a break below the prior N-day low (classic turtle-trader style)."""
+    close = prices["close"]
+    hi = close.rolling(window).max().shift(1)
+    lo = close.rolling(window).min().shift(1)
+    sig = pd.Series(np.nan, index=close.index)
+    sig[close > hi] = 1.0
+    sig[close < lo] = 0.0
+    return sig.ffill().fillna(0.0)
+
+
 if __name__ == "__main__":
     from datetime import datetime
     from data import get_daily
